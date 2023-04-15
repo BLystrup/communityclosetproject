@@ -1,8 +1,8 @@
 Name: Brittany Lystrup
 
-Stack: Java
+Stack: JavaScript
 
-GitHub Repo Link: 
+GitHub Repo Link: https://github.com/BLystrup/communityclosetproject
 
 Project Name: Our Community Closet
 
