@@ -1,14 +1,19 @@
 import './App.css';
+import GarmentForm from './components/GarmentForm';
+import GarmentView from './components/GarmentView';
+import Dashboard from './components/Dashboard';
+import EditGarment from './components/EditGarment';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <h1 className="col-md-2 mt-2">Store Finder</h1>
       <BrowserRouter>
         <Routes>
-          <Route element={<GarmentList/>} path="/dashboard"/>
+          {/* <Route element={<Login/>} path=""/> */}
+          <Route element={<Dashboard/>} path="/dashboard"/>
           <Route element={<GarmentForm/>} path="additem"/>
-          <Route element={<OneGarment/>} path="view/:id"/>
+          <Route element={<GarmentView/>} path="view/:id"/>
           <Route element={<EditGarment/>} path="edit/:id"/>
         </Routes>
       </BrowserRouter>
