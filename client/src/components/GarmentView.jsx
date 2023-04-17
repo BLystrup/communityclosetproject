@@ -20,16 +20,19 @@ const OneGarment = (props) => {
 
     return(
         <div>
-            <Link to="/dashboard">Back to Dashboard</Link>
-            <Link to="/">Logout</Link>
-            <h1 className='mt-3'>{oneGarment.style}</h1>
-            <p>Brand: {oneGarment.brand}</p>
-            <p>Size: {oneGarment.size}</p>
-            <p>Color: {oneGarment.color}</p>
-            <p>Fit: {oneGarment.fit}</p>
+            <div className='col-md-2 offset-9 navbar navbar-text mb-2'>
+                <Link to="/dashboard">Back to Dashboard</Link>
+                <Link to="/">Logout</Link>
+            </div>
+            <h1 className="col-md-6 mb-5">{oneGarment.style}</h1>
+            <img className='img-fluid img-thumbnail image mb-3' src={oneGarment.image} alt={oneGarment.style} />
+            <p><strong>Brand:</strong> {oneGarment.brand}</p>
             <p>{oneGarment.description}</p>
-            <img src={oneGarment.image} alt={oneGarment.style} />
-            <button className="mt-3" onClick={navigateToEditGarment}>Edit this item</button>
+            <p><strong>Size:</strong> {oneGarment.size}</p>
+            <p><strong>Color:</strong> {oneGarment.color}</p>
+            <p><strong>Fit:</strong> {oneGarment.fit}</p>
+            <p><strong>Owner:</strong>{oneGarment.owner}</p>
+            <button className="btn btn-light mt-3" onClick={navigateToEditGarment}>Edit this item</button>
         </div>
     )
 }

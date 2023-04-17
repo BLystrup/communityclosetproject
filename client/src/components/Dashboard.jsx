@@ -33,10 +33,12 @@ const GarmentList = () => {
 
     return(
         <div>
-            <h1>Welcome to our Community Closet!</h1>
-            <button onClick={navigateToGarmentForm}>Add a clothing item</button>
-            <Link to="/">Logout</Link>
-            <table className='table table-striped table-bordered'>
+            <div className='col-md-2 offset-9 navbar navbar-text mb-2'>
+                <button className='btn btn-link' onClick={navigateToGarmentForm}>Add a clothing item</button>
+                <Link to="/">Logout</Link>
+            </div>
+            <h1 className="col-md-6 mb-5">Welcome to our Community Closet!</h1>
+            <table className='mx-5 table table-striped table-hover table-bordered border-dark'>
                 <thead>
                     <tr>
                         <th scope='col'>Image</th>
@@ -52,12 +54,12 @@ const GarmentList = () => {
                         garmentList.map((garment) => {
                             return(
                                     <tr key={garment._id}>
-                                        <td><img src={garment.image} alt={garment.style} /></td>
+                                        <td><img className='img-fluid img-thumbnail thumbnails' src={garment.image} alt={garment.style} /></td>
                                         <td scope="row"><Link to={`/view/${garment._id}`}>{garment.style}</Link></td>
                                         <td>{garment.size}</td>
-                                        <td>garment.owner</td>
+                                        <td>{garment.owner}</td>
                                         <td>{garment.availability}</td>
-                                        <td><button onClick={(e) => {navigateToEditGarment(garment._id)}}>Edit</button><button onClick={(e) => {deleteGarment(garment._id)}}>Delete</button></td>
+                                        <td><button className='btn btn-light' onClick={(e) => {navigateToEditGarment(garment._id)}}>Edit</button> | <button className='btn btn-danger' onClick={(e) => {deleteGarment(garment._id)}}>Delete</button></td>
                                     </tr>
                             )
                         }

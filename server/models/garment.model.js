@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const GarmentSchema = new mongoose.Schema({
+    owner: {
+        type: String,
+        required: [true, "An owner name is required."],
+        minLength: [2, "Your name must be at least 2 characters."]
+    },
     brand: {
         type: String,
         required: [true, "Brand name is required."],
@@ -28,7 +33,8 @@ const GarmentSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ["top", "jacket", "dress", "skirt", "short", "pant", "accessory", "shoes"],
+        enum: ["select a category", "top", "jacket", "dress", "skirt", "short", "pant", "accessory", "shoes"],
+        default: "select a category"
     },
     description: {
         type: String,

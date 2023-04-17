@@ -5,9 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: aqua;
+  color: blueviolet;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  font-family: "Papyrus", "Papyrus", cursive;;
+}
+
+.thumbnails {
+  height: 90px;
+}
+
+.image {
+  height: 400px;
+}
+
+

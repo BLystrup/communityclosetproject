@@ -1,6 +1,6 @@
 Name: Brittany Lystrup
 
-Stack: JavaScript
+Stack: Java --> 4/12 Updated to Javascript in order to better specialize in one language.
 
 GitHub Repo Link: https://github.com/BLystrup/communityclosetproject
 
@@ -8,6 +8,8 @@ Project Name: Our Community Closet
 
 Project Description: A site where friends (users) can add any clothing items they are open to lending out to their friends, an attempt to be more sustainable with clothing.
 
-MVP Features: A user login and registration that will validate user inputs. Only a logged in user can navigate to site routes. On the dashboard, each user can see all clothing items added by all users, navigate to an item's page to see more information on that item, see whether an item is available to borrow or not. Only the owner of the item will be able to edit or delete that item. When adding or editing an item, there will be validations added.
+MVP Features: On the dashboard, each user can see all clothing items added by all users, navigate to an item's page to see more information on that item, see whether an item is available to borrow or not. When adding or editing an item, there will be validations added.
 
-Bonus Features: Publicly deploy the project. Add functionality for users to request available items and also return any items they are borrowing. Add an image file upload functionality rather than adding a url.
+Bonus Features: Publicly deploy the project. App uses a CSS framework.
+
+Bonus Features to continue working on: A user login and registration that will validate user inputs. Only a logged in user can navigate to site routes. Only the owner of the item will be able to edit or delete that item. Add functionality for users to request available items and also return any items they are borrowing. Add an image file upload functionality rather than adding a url.

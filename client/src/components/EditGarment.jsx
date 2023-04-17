@@ -7,7 +7,7 @@ const EditGarment = (props) => {
     const {id} = useParams();
     const [oneGarment, setOneGarment] = useState({});
     const navigate = useNavigate();
-    // const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/garments/${id}`)
@@ -17,6 +17,9 @@ const EditGarment = (props) => {
 
     const formValidator = () => {
         let isValid = true;
+        if (oneGarment.owner.length < 2) {
+            return false
+        }
         if (oneGarment.brand.length < 2) {
             return false
         }
@@ -48,17 +51,18 @@ const EditGarment = (props) => {
                 .then(res => navigate(`/view/${id}`))
                 .catch(err => console.log(err))
         }
-        // else {
-        //     setErrors({
-        //         brand: "Brand must be at least 2 characters.",
-        //         style: "Style must be at least 4 characters.",
-        //         size: "Size must be at least 1 character.",
-        //         color: "Color must be at least 3 characters.",
-        //         fit: "Fit must be at least 5 characters.",
-        //         description: "Description must be at least 10 characters.",
-        //         image: "A URL must be given for an image."
-        //     })
-        // }
+        else {
+            setErrors({
+                owner: "Your name must be at least 2 characters.",
+                brand: "Brand must be at least 2 characters.",
+                style: "Style must be at least 4 characters.",
+                size: "Size must be at least 1 character.",
+                color: "Color must be at least 3 characters.",
+                fit: "Fit must be at least 5 characters.",
+                description: "Description must be at least 10 characters.",
+                image: "A URL must be given for an image."
+            })
+        }
     }
 
     const changeHandler = (e) => {
@@ -70,38 +74,45 @@ const EditGarment = (props) => {
 
     return(
         <div>
-            <Link to="/dashboard">Back to Dashboard</Link>
-            <Link to="/">Logout</Link>
-            <h1>Edit this Item</h1>
+            <div className='col-md-2 offset-9 navbar navbar-text mb-5'>
+                    <Link to="/dashboard">Back to Dashboard</Link>
+                    <Link to="/">Logout</Link>
+            </div>
+            <h1 className="col-md-6 mb-5">Edit this Item</h1>
             <form action="" className="mx-auto mt-2" onSubmit={editGarment}>
-                {/* {errors.brand ? <p className="text-danger">{errors.brand}</p> : ""} */}
-                <div className="form-group ms-5 me-5">
-                    <label htmlFor="brand">Brand:</label>
-                    <input type="text" className='form-control' name='brand' id='brand' value={oneGarment.brand} onChange={changeHandler}/>
+                {errors.brand ? <p className="text-danger">{errors.brand}</p> : ""}
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="brand">Brand:</label>
+                    <input type="text" className='col-auto' name='brand' id='brand' value={oneGarment.brand} onChange={changeHandler}/>
                 </div>                
-                {/* {errors.style ? <p className="text-danger">{errors.style}</p> : ""} */}
-                <div className="form-group ms-5 me-5 mt-3">
-                    <label htmlFor="style">Style:</label>
-                    <input type="text" className='form-control' name='style' id='style' value={oneGarment.style} onChange={changeHandler}/>
+                {errors.style ? <p className="text-danger">{errors.style}</p> : ""}
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="style">Style:</label>
+                    <input type="text" className='col-auto' name='style' id='style' value={oneGarment.style} onChange={changeHandler}/>
                 </div>
-                {/* {errors.size ? <p className="text-danger">{errors.size}</p> : ""} */}
-                <div className="form-group ms-5 me-5 mt-3">
-                    <label htmlFor="size">Size:</label>
-                    <input type="text" className='form-control' name='size' id='size' value={oneGarment.size} onChange={changeHandler}/>
+                {errors.owner ? <p className="text-danger">{errors.owner}</p> : ""}
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="owner">Owner:</label>
+                    <input type="text" className='col-auto' name='owner' id='owner' value={oneGarment.owner} onChange={changeHandler}/>
                 </div>
-                {/* {errors.color ? <p className="text-danger">{errors.color}</p> : ""} */}
-                <div className="form-group ms-5 me-5 mt-3">
-                    <label htmlFor="color">Color:</label>
-                    <input type="text" className='form-control' name='color' id='color' value={oneGarment.color} onChange={changeHandler}/>
+                {errors.size ? <p className="text-danger">{errors.size}</p> : ""}
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="size">Size:</label>
+                    <input type="text" className='col-auto' name='size' id='size' value={oneGarment.size} onChange={changeHandler}/>
                 </div>
-                {/* {errors.fit ? <p className="text-danger">{errors.fit}</p> : ""} */}
-                <div className="form-group ms-5 me-5 mt-3">
-                    <label htmlFor="fit">Fit:</label>
-                    <input type="text" className='form-control' name='fit' id='fit' value={oneGarment.fit} onChange={changeHandler}/>
+                {errors.color ? <p className="text-danger">{errors.color}</p> : ""}
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="color">Color:</label>
+                    <input type="text" className='col-auto' name='color' id='color' value={oneGarment.color} onChange={changeHandler}/>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="category">Category:</label>
-                    <select name="category" id="category" value={oneGarment.category} onChange={changeHandler}>
+                {errors.fit ? <p className="text-danger">{errors.fit}</p> : ""}
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="fit">Fit:</label>
+                    <input type="text" className='col-auto' name='fit' id='fit' value={oneGarment.fit} onChange={changeHandler}/>
+                </div>
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="category">Category:</label>
+                    <select className='col-auto' name="category" id="category" value={oneGarment.category} onChange={changeHandler}>
                         <option value="top">Top</option>
                         <option value="jacket">Jacket</option>
                         <option value="dress">Dress</option>
@@ -112,24 +123,24 @@ const EditGarment = (props) => {
                         <option value="shoes">Shoes</option>
                     </select>
                 </div>
-                {/* {errors.image ? <p className="text-danger">{errors.image}</p> : ""} */}
-                <div className="form-group ms-5 me-5 mt-3">
-                    <label htmlFor="image">Image URL:</label>
-                    <input type="text" className='form-control' name='image' id='image' value={oneGarment.image} onChange={changeHandler}/>
+                {errors.image ? <p className="text-danger">{errors.image}</p> : ""}
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="image">Image URL:</label>
+                    <input type="url" className='form-auto' name='image' id='image' value={oneGarment.image} onChange={changeHandler}/>
                 </div>
-                {/* {errors.description ? <p className="text-danger">{errors.description}</p> : ""} */}
-                <div className="form-group ms-5 me-5 mt-3">
-                    <label htmlFor="description">Style Description:</label>
-                    <input type="text" className='form-control' name='description' id='description' value={oneGarment.description} onChange={changeHandler}/>
+                {errors.description ? <p className="text-danger">{errors.description}</p> : ""}
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="description">Style Description:</label>
+                    <input type="text" className='form-auto' name='description' id='description' value={oneGarment.description} onChange={changeHandler}/>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="availability">Item Available:</label>
-                    <select name="availability" id="availability" value={oneGarment.availability} onChange={changeHandler}>
+                <div className="row g-3 align-items-center ms-5 mb-3">
+                    <label className='col-auto' htmlFor="availability">Item Available:</label>
+                    <select className='col-auto' name="availability" id="availability" value={oneGarment.availability} onChange={changeHandler}>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                     </select>
                 </div>
-                <button className="btn btn-primary mt-3">Update Item</button>
+                <button className="btn btn-light mt-3">Update Item</button>
             </form>
         </div>
     )
