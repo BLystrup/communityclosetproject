@@ -4,17 +4,15 @@ import GarmentView from './components/GarmentView';
 import Dashboard from './components/Dashboard';
 import EditGarment from './components/EditGarment';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import RegisterForm from './components/RegisterForm';
 import NotFound from './components/NotFound';
-import LoginForm from './components/LoginForm';
+import RegLog from './components/RegLog';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route element={<RegisterForm/>} path="/"/>
-          <Route element={<LoginForm/>} path="/login"/>
+          <Route element={<RegLog/>} path="/"/>
           <Route element={<Dashboard/>} path="/dashboard"/>
           <Route element={<GarmentForm/>} path="additem"/>
           <Route element={<GarmentView/>} path="view/:id"/>

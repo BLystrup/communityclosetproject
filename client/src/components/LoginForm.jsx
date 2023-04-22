@@ -25,8 +25,8 @@ const LoginForm = () => {
     }
 
     return (
-        <div>
-            <form action="" className="col-md-6 mx-auto" onSubmit={submitHandler}>
+        <div className="col-md-5 mt-5 mx-auto">
+            <form action="" onSubmit={submitHandler}>
                 <h3 className='text-center'>Login</h3>
                 <div className='form-group'>
                     <label htmlFor="" className='form-label'>Email:</label>
