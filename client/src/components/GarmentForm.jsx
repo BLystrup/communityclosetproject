@@ -78,11 +78,20 @@ const GarmentForm = () => {
         }
     }
 
+    const logout = () => {
+        axios.post('http://localhost:8000/api/users/logout', {}, {withCredentials: true})
+            .then(res => {
+                console.log(res)
+                navigate('/')
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <div>
             <div className='col-md-2 offset-9 navbar navbar-text mb-2'>
                 <Link to="/dashboard">Back to Dashboard</Link>
-                <Link to="/">Logout</Link>
+                <button className='btn btn-link' onClick={logout}>Logout</button>
             </div>
             <h1 className="col-md-6 mb-5">Add an Item</h1>
             <form action="" className="col-md-6 offset-2" onSubmit={submitHandler}>

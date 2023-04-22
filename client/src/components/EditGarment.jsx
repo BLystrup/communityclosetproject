@@ -72,11 +72,20 @@ const EditGarment = (props) => {
         })
     }
 
+    const logout = () => {
+        axios.post('http://localhost:8000/api/users/logout', {}, {withCredentials: true})
+            .then(res => {
+                console.log(res)
+                navigate('/')
+            })
+            .catch(err => console.log(err))
+    }
+
     return(
         <div>
             <div className='col-md-2 offset-9 navbar navbar-text mb-5'>
                     <Link to="/dashboard">Back to Dashboard</Link>
-                    <Link to="/">Logout</Link>
+                    <button className='btn btn-link' onClick={logout}>Logout</button>
             </div>
             <h1 className="col-md-6 mb-5">Edit this Item</h1>
             <form action="" className="mx-auto mt-2" onSubmit={editGarment}>

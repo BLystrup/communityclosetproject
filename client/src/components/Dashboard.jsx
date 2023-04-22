@@ -18,6 +18,15 @@ const GarmentList = () => {
         navigate("/additem")
     }
 
+    const logout = () => {
+        axios.post('http://localhost:8000/api/users/logout', {}, {withCredentials: true})
+            .then(res => {
+                console.log(res)
+                navigate('/')
+            })
+            .catch(err => console.log(err))
+    }
+
     const navigateToEditGarment = (garmentId) => {
         navigate(`/edit/${garmentId}`)
     }
@@ -35,7 +44,7 @@ const GarmentList = () => {
         <div>
             <div className='col-md-2 offset-9 navbar navbar-text mb-2'>
                 <button className='btn btn-link' onClick={navigateToGarmentForm}>Add a clothing item</button>
-                <Link to="/">Logout</Link>
+                <button className='btn btn-link' onClick={logout}>Logout</button>
             </div>
             <h1 className="col-md-6 mb-5">Welcome to our Community Closet!</h1>
             <table className='mx-5 table table-striped table-hover table-bordered border-dark'>
